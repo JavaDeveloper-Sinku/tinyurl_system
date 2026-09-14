@@ -22,12 +22,12 @@ public class Url {
     private String shortCode;
 
     @Column(nullable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
 
     @PrePersist
     public void prePersist(){
-        this.createAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
 }

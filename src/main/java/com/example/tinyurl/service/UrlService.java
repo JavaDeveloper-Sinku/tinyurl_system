@@ -2,12 +2,11 @@ package com.example.tinyurl.service;
 
 
 import com.example.tinyurl.entity.Url;
+import com.example.tinyurl.exception.ShortUrlNotFoundException;
 import com.example.tinyurl.repository.UrlRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
-import java.util.Random;
+import java.security.SecureRandom;
 
 @Service
 @RequiredArgsConstructor
@@ -32,27 +31,36 @@ public class UrlService {
     }
 
     // Short Code se Original URL  find
-    public Optional<Url> getOriginalUrl(String shortCode){
-        return urlRepository.findByShortCode(shortCode);
+    public Url getOriginalUrl(String shortCode) {
 
+        return urlRepository.findByShortCode(shortCode)
+                .orElseThrow(() ->
+                        new ShortUrlNotFoundException(
+                                "Short URL not found: " + shortCode
+                        )
+                );
     }
 
     // Random ShortCode generate
-    private String generateShortCode(){
-        Random random = new Random();
+    private String generateShortCode() {
+
+        SecureRandom random = new SecureRandom();
         StringBuilder shortCode = new StringBuilder();
 
         do {
             shortCode.setLength(0);
-            for (int i = 0; i < SHORT_CODE_LENGTH; i++) {
-                shortCode.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
 
+            for (int i = 0; i < SHORT_CODE_LENGTH; i++) {
+                shortCode.append(
+                        CHARACTERS.charAt(
+                                random.nextInt(CHARACTERS.length())
+                        )
+                );
             }
 
         } while (urlRepository.existsByShortCode(shortCode.toString()));
 
-
-        return  shortCode.toString();
+        return shortCode.toString();
     }
 
 }
