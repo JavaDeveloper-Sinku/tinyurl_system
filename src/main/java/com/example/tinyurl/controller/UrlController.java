@@ -27,7 +27,7 @@ public class UrlController {
         Url url = urlService.createShortUrl(request.originalUrl());
 
         return ResponseEntity.ok(
-                "Short URL: http://localhost:8080/" + url.getShortCode()
+                "Short URL: " + url.getShortCode()
         );
     }
 

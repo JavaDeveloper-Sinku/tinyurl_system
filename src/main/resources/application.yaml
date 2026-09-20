@@ -1,17 +1,5 @@
 spring:
   application:
     name: tinyurl
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/tinyurl_db?createDatabaseIfNotExist=true
-    username: root
-    password: rootuser99
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
+  profiles:
+    active: prod
