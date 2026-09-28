@@ -1,0 +1,133 @@
+{
+  "info": {
+    "_postman_id": "b2396efe-065d-42b0-bd17-65954e043b14",
+    "name": "tinyUrl_System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37905198"
+  },
+  "item": [
+    {
+      "name": "URL_Shorter API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"originalUrl\": \"https://www.google.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/shorten",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "shorten"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Shorten_Url Check",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"originalUrl\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/shorten",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "shorten"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Checking Short URL",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/wHCwwj",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "wHCwwj"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deploy_URL_Testing",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"originalUrl\": \"https://www.google.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://tinyurl-system.onrender.com/api/shorten",
+          "protocol": "https",
+          "host": [
+            "tinyurl-system",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "shorten"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
